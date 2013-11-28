@@ -1,0 +1,15 @@
+{
+    "name": "wordcount",
+    "comName":"Wordcount",
+    "version": "0.1",
+    "desc": "",
+    "tag":"wordcount",
+    "githubName":"akecn",
+    "author": {
+        "name": "阿克",
+        "email": "ake.wgk@taobao.com",
+        "page": ""
+    },
+    "type": "kissy-gallery",
+    "type-url": "http://gallery.kissyui.com/guide"
+}
