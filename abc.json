@@ -1,9 +1,9 @@
 {
     "name": "wordcount",
-    "comName":"Wordcount",
+    "comName":"WordCount",
     "version": "0.2",
     "desc": "WordCount是简单易用的字符长度计算工具，提供了三种计算方式。",
-    "tag":"mini",
+    "tag":"kissy-mini,mini",
     "githubName":"akecn",
     "author": {
         "name": "阿克",
