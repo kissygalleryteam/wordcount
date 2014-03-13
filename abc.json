@@ -1,15 +1,17 @@
 {
     "name": "wordcount",
     "comName":"Wordcount",
-    "version": "0.1",
-    "desc": "",
-    "tag":"wordcount",
+    "version": "0.2",
+    "desc": "WordCount是简单易用的字符长度计算工具，提供了三种计算方式。",
+    "tag":"mini",
     "githubName":"akecn",
     "author": {
         "name": "阿克",
         "email": "ake.wgk@taobao.com",
         "page": ""
     },
+	"flexComboPort":"81",
+	"reserveServerPort":"8080",
     "type": "kissy-gallery",
     "type-url": "http://gallery.kissyui.com/guide"
 }
