@@ -116,7 +116,7 @@ KISSY.add('gallery/wordcount/0.2/index',function(S, Node) {
             });
 
             // 失去焦点的时候才真正对内容trim，否则会导致空格无法输入的问题。
-            cfg.trim && E.on($text, 'blur', function(ev) {
+            cfg.trim && $text.on('blur', function(ev) {
                 var text = $text.val();
                 $text.val(S.trim(text));
             });
