@@ -43,7 +43,7 @@ KISSY.add(function(S, Node) {
     var $ = Node.all;
 
     // kissy mini不支持valuechange事件。移动端也不需要这么实时。
-    var EVT_DETECT = S.config("mini") ? "change" : "valuechange";
+    var EVT_DETECT = S.config("mini") ? "change" : "valuechange blur";
 
     var defConfig = {
             // type有三种形式。han表示中文长度。byte表示字符长度。length无视中英文，直接取length结果。
@@ -176,8 +176,8 @@ KISSY.add(function(S, Node) {
                     if (size && !overIt &&
                         length > size * rate) {
 
-                        position = i;
                         overIt = true;
+                        position = i;
                         if(preventOver) {
                             break;
                         }
