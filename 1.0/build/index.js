@@ -113,7 +113,7 @@ KISSY.add('gallery/wordcount/1.0/index',function(S, Node) {
 
                 var template = result.over ? tpl_countover : tpl_countdown;
 
-                if(cfg.preventOver && result.content) {
+                if(cfg.preventOver && result.over && result.content) {
                     $text.val(result.content);
                 }
 
