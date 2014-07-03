@@ -42,7 +42,6 @@
 KISSY.add(function(S, Node) {
     var $ = Node.all;
 
-    // kissy mini不支持valuechange事件。移动端也不需要这么实时。
     var EVT_DETECT = "keyup blur";
 
     var defConfig = {
