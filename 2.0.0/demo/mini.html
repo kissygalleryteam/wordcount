@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Wordcount的demo</title>
+    <script type="text/javascript" src="http://g.tbcdn.cn/kissy/m/0.2.0/mini-full.js"></script>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/kissy/k/1.3.0/css/dpl/base-min.css">
+</head>
+<body>
+<h2>WordCount的demo</h2>
+
+<fieldset>
+    <legend>计算内容长度</legend>
+    <ul>
+        <li>
+            <label>
+                <input type="radio" checked class="J_Demo1Type" name="demo1type" value="han"/>
+                (type=han)中文为主。中文算一个长度，英文算半个长度
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" class="J_Demo1Type" name="demo1type" value="byte"/>
+                (type=byte)英文为主。中文算两个长度，英文算一个长度
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="radio" class="J_Demo1Type" name="demo1type" value="length"/>
+                (type=length)中英文不缺分，中文和英文都算一个长度
+            </label>
+        </li>
+    </ul>
+
+    <textarea name="" id="demo1input" cols="30" rows="10">1二3四5陆7捌9零</textarea>
+    <div id="demo1output"></div>
+</fieldset>
+
+
+<fieldset>
+    <legend>快速绑定输入框元素</legend>
+
+    <input type="text" id="demo2input" size="40"/>
+    <div id="demo2output"></div>
+</fieldset>
+
+<fieldset>
+    <legend>自定义文案</legend>
+
+    <input type="text" id="demo2input2" size="40"/>
+    <div id="demo2output2"></div>
+</fieldset>
+
+<script>
+    (function(S) {
+        var debug = ~location.search.indexOf('ks-debug');
+
+        if (debug) {
+            var srcPath = "../../";
+            S.config({
+                debug: debug,
+                packages:[
+                    {
+                        name:"kg/wordcount",
+                        path:srcPath,
+                        charset:"utf-8",
+                        ignorePackageNameInUri:true
+                    }
+                ]
+            });
+        }
+
+        S.use('kg/wordcount/0.2/index, node', function (S, WordCount, Node) {
+            var $ = Node.all;
+            var wordcount = new WordCount({
+                trim: true
+            });
+
+            var $text = $("#demo1input"),
+                    $radio = $(".J_Demo1Type"),
+                    $output = $("#demo1output"),
+                    type = "han";
+
+            $radio.on('click', function(ev) {
+                var target = ev.currentTarget;
+
+                type = $(target).val();
+                go();
+            });
+
+
+            function go() {
+                var maxSize = 30,
+
+                        result = wordcount.count($text.val(), {
+                            type: type,
+                            maxSize: maxSize
+                        });
+
+                var output = [
+                    "长度为：" + result.count,
+                    (result.isOver ? "超过" : "不超过") + maxSize,
+                    (result.isOver ? "超过" : "还能输入") + result.over
+                ]
+                $output.text(output.join("\n"));
+            }
+
+            $text.on('valuechange change', function() {
+                go();
+            });
+            go();
+
+
+            wordcount.bind({
+                input: demo2input,
+                output: demo2output,
+                type: "byte"
+            });
+
+            wordcount.bind({
+                input: $("#demo2input2"),
+                output: $("#demo2output2"),
+                type: "byte"
+            }, {
+                countdown: "yo yo count {count}/30",
+                countover: "oh no too much {count}/30"
+            });
+
+        });
+    })(KISSY);
+</script>
+</body>
+</html>
+
